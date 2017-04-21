@@ -1,4 +1,7 @@
-
+/*
+ * each user has a userNumber and password in order to  login
+ * each user has two type of accounts: cheque and saving account 
+ */
 public class User {
 
 	public User(String userNumber, int password, ChequeAccount chque, SavingAccount saving) {

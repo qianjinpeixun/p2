@@ -1,7 +1,12 @@
-
+/*
+ * This is the base class, cheque and saving account should extend this class
+ * 
+ */
 public class Account {
 
+	//each account should have a accountNumber
 	private String accountNumber;
+	//this is the current balance of this account
 	private double balance;
 
 	public Account(String accountNumber, double balance) {
@@ -31,6 +36,7 @@ public class Account {
 		return "Account [accountNumber=" + accountNumber + ", balance=" + balance + "]";
 	}
 
+	//deposit is the same logic with cheque and saving account
 	public String deposit(double amount) {
 		String ret = "ok";
 		if (amount > 0.0)
@@ -40,6 +46,9 @@ public class Account {
 		return ret;
 	}
 
+	//default method withdraw can be used by cheque account
+	//but for the saving account, the logic may be different
+	//there will have a fee for saving account during withdraw money
 	public String withdraw(double amount) {
 		String ret = "ok";
 		if (amount < 0.0) {
@@ -54,10 +63,10 @@ public class Account {
 		return ret;
 	}
 
+	//During transfer to other account, first step is to check if the receipt number is correct
+	//then check if the balance is suciffient
 	public String transfer(String accountNumber, double amount) {
 		String ret = "ok";
-		boolean accountNumberIsCorrect = false;
-		User receiptUser = null;
 		if (amount < 0.0) {
 			ret = "amount shoule be more than zeor!";
 		} else if (balance < amount) {
